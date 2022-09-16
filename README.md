@@ -1,4 +1,31 @@
-# Getting Started with Create React App
+# create-react-app with uipkg and TailwindCSS
+
+This repo is an example on how to setup uipkg with TailwindCSS in create-react-app.
+
+Follow TailwindCSS instruction to add it to your project: https://tailwindcss.com/docs/guides/create-react-app
+
+Once you're done, you need to add one final bit - point TailwindCSS to look for your scoped packages in `node_modules` folder.
+
+This is done by adding additional path to [`tailwind.config.js`](./tailwind.config.js#L5):
+
+```diff
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
++    "./node_modules/@<your-uipkg-handle>/**/*.js"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+```
+
+After that you should be set! Run `npm start` and start using your components.
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
